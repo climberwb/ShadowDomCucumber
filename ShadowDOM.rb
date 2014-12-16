@@ -1,4 +1,10 @@
-d# Drop in methods for interacting with shadowDOM elements in capybara
+# Drop in methods for interacting with shadowDOM elements in capybara
+# Place this file in support folder and require it in env.rb
+# The shadow_elm argument is the outter-most layer of the shadowDOM wrapper
+# The target is the specific css selector you desire
+# Index is 0 by default(returns an array of items, if you want one other than the 1st add an index argument)
+# Text/URL is self explanatory
+
 module Shadow
   extend Capybara::DSL
 
@@ -22,7 +28,7 @@ module Shadow
     ")
   end
 
-  def self.icon_attr_present?(shadow_elm, target, index=0,attribute)
+  def self.icon_attr_present?(shadow_elm, target, index=0, attribute)
     execute_script("
       var shadow_elm = '#{shadow_elm}';
       var target = '#{target}';
